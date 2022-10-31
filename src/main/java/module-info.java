@@ -2,6 +2,7 @@ module com.perinze.contact {
     requires javafx.controls;
     requires javafx.fxml;
 
+    requires com.zaxxer.hikari;
     requires org.controlsfx.controls;
     requires java.persistence;
     requires java.desktop;
@@ -14,4 +15,5 @@ module com.perinze.contact {
 
     opens com.perinze.contact to javafx.fxml;
     exports com.perinze.contact;
+    exports com.perinze.contact.model to spring.beans;
 }

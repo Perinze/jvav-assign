@@ -14,6 +14,15 @@ public class Contact extends AbstractModel {
     List<Phone> phoneList;
     List<Email> emailList;
 
+    public Contact() {
+
+    }
+
+    public Contact(String name, String note) {
+        this.name = name;
+        this.note = note;
+    }
+
     @Column(nullable = false)
     public String getName() {
         return name;
@@ -50,4 +59,8 @@ public class Contact extends AbstractModel {
         this.emailList = emailList;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }
