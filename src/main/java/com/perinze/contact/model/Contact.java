@@ -11,17 +11,11 @@ import java.util.List;
 @Table(name = "contact")
 public class Contact extends AbstractModel {
     String name;
-    String note;
     String phone;
     String email;
 
     public Contact() {
 
-    }
-
-    public Contact(String name, String note) {
-        this.name = name;
-        this.note = note;
     }
 
     @Column(nullable = false)
@@ -31,15 +25,6 @@ public class Contact extends AbstractModel {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Column(nullable = false)
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
     }
 
     @Column(nullable = false)
