@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,8 +12,8 @@ import java.util.List;
 public class Contact extends AbstractModel {
     String name;
     String note;
-    List<Phone> phoneList;
-    List<Email> emailList;
+    String phone;
+    String email;
 
     public Contact() {
 
@@ -41,22 +42,22 @@ public class Contact extends AbstractModel {
         this.note = note;
     }
 
-    @Transient
-    public List<Phone> getPhoneList() {
-        return phoneList;
+    @Column(nullable = false)
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneList(List<Phone> phoneList) {
-        this.phoneList = phoneList;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    @Transient
-    public List<Email> getEmailList() {
-        return emailList;
+    @Column(nullable = false)
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailList(List<Email> emailList) {
-        this.emailList = emailList;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
