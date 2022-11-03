@@ -26,4 +26,8 @@ public class ListBox extends VBox {
     public void setSelectionAction(ChangeListener<Contact> listener) {
         list.getSelectionModel().selectedItemProperty().addListener(listener);
     }
+
+    public Contact getSelectedItem() {
+        return list.getSelectionModel().getSelectedItem();
+    }
 }

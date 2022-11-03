@@ -19,4 +19,12 @@ public class ContactService {
     public void insert(Contact contact) {
         db.insert(contact);
     }
+
+    public void updateOrInsert(Contact contact) {
+        if (null == contact.getId()) {
+            db.insert(contact);
+        } else {
+            db.update(contact);
+        }
+    }
 }

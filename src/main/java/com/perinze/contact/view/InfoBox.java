@@ -44,6 +44,10 @@ public class InfoBox extends VBox {
             name.set(contact.getName());
             phone.set(contact.getPhone());
             email.set(contact.getEmail());
+        } else {
+            name.set("");
+            phone.set("");
+            email.set("");
         }
     }
 

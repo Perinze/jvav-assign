@@ -1,9 +1,7 @@
 package com.perinze.contact;
 
-import com.perinze.contact.view.AddBox;
-import com.perinze.contact.view.InfoBox;
-import com.perinze.contact.view.ListBox;
-import com.perinze.contact.view.MainBox;
+import com.perinze.contact.service.ContactService;
+import com.perinze.contact.view.*;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import com.perinze.contact.model.AbstractModel;
@@ -33,27 +31,14 @@ public class HelloApplication extends Application {
     DataSource ds;
     JdbcTemplate jdbcTemplate;
     DbTemplate db;
+    ContactService contactService;
 
     @Override
     public void start(Stage stage) throws IOException {
         setDb();
+        contactService = new ContactService(db);
 
-        ListBox listBox = new ListBox();
-        InfoBox infoBox = new InfoBox();
-        AddBox addBox = new AddBox();
-        MainBox mainBox = new MainBox(infoBox, addBox);
-        HBox root = new HBox();
-
-        listBox.setItems(db.from(Contact.class).list());
-        listBox.setSelectionAction((observableValue, old, contact) -> infoBox.set(contact));
-
-        addBox.setDoneAction((actionEvent, contact) -> {
-            db.insert(contact);
-            listBox.setItems(db.from(Contact.class).list());
-            mainBox.switchTo(infoBox);
-        });
-
-        root.getChildren().addAll(listBox, mainBox);
+        RootBox root = new RootBox(contactService);
 
         Scene scene = new Scene(root, 400, 200);
         stage.setScene(scene);
