@@ -25,12 +25,9 @@ public class DetailBlock extends VBox {
         value.setText(v);
     }
 
-    public boolean isEditable() {
-        return editable;
-    }
-
     public void setEditable(boolean editable) {
         this.editable = editable;
+        value.setEditable(editable);
     }
 
 }
