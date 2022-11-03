@@ -7,10 +7,13 @@ import javafx.scene.layout.VBox;
 public class DetailBlock extends VBox {
     Label label;
     TextField value;
+    boolean editable;
 
     public DetailBlock(String labelName) {
         label = new Label(labelName);
         value = new TextField();
+        value.setEditable(false);
+        editable = false;
         this.getChildren().addAll(label, value);
     }
 
@@ -21,4 +24,13 @@ public class DetailBlock extends VBox {
     public void set(String v) {
         value.setText(v);
     }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
+
 }
