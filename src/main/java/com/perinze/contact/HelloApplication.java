@@ -18,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.ChoiceBoxListCell;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -40,7 +41,7 @@ public class HelloApplication extends Application {
 
         RootBox root = new RootBox(contactService);
 
-        Scene scene = new Scene(root, 400, 200);
+        Scene scene = new Scene(root, 400, 250);
         stage.setScene(scene);
         stage.show();
     }

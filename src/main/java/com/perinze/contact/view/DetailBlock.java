@@ -12,8 +12,10 @@ public class DetailBlock extends VBox {
     public DetailBlock(String labelName) {
         label = new Label(labelName);
         value = new TextField();
+        value.prefWidthProperty().set(160);
         value.setEditable(false);
         editable = false;
+        this.setSpacing(3);
         this.getChildren().addAll(label, value);
     }
 

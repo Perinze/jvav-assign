@@ -1,18 +1,20 @@
 package com.perinze.contact.view;
 
 import com.perinze.contact.service.ContactService;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.util.function.Consumer;
 
-public class RootBox extends VBox {
+public class RootBox extends ListBox {
     ContactService contactService;
     ListBox listBox;
     InfoBox infoBox;
     Button add;
     Button edit;
+    Button remove;
     Button done;
     Button cancel;
     public RootBox(ContactService contactService) {
@@ -22,17 +24,23 @@ public class RootBox extends VBox {
         infoBox = new InfoBox();
 
         HBox main = new HBox();
+        main.prefWidthProperty().set(300);
+        main.setSpacing(20);
         main.getChildren().addAll(listBox, infoBox);
 
         add = new Button("new");
         edit = new Button("edit");
+        remove = new Button("remove");
         done = new Button("done");
         cancel = new Button("cancel");
         setEditing(false);
 
         HBox buttons = new HBox();
-        buttons.getChildren().addAll(add, edit, done, cancel);
+        buttons.setSpacing(7);
+        buttons.getChildren().addAll(add, edit, remove, done, cancel);
 
+        this.setSpacing(12);
+        this.setPadding(new Insets(10, 15, 15, 10));
         this.getChildren().addAll(buttons, main);
 
 
@@ -45,6 +53,10 @@ public class RootBox extends VBox {
         add.setOnAction(event -> {
             setEditing(true);
             infoBox.set(null);
+        });
+        remove.setOnAction(event -> {
+            contactService.remove(infoBox.get());
+            refreshList();
         });
         edit.setOnAction(event -> {
             setEditing(true);
@@ -64,6 +76,7 @@ public class RootBox extends VBox {
     private void setEditing(boolean editing) {
         add.setDisable(editing);
         edit.setDisable(editing);
+        remove.setDisable(editing);
         done.setDisable(!editing);
         cancel.setDisable(!editing);
         infoBox.setEditable(editing);

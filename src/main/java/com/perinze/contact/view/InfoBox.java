@@ -1,8 +1,11 @@
 package com.perinze.contact.view;
 
 import com.perinze.contact.model.Contact;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+
+import java.awt.*;
 
 public class InfoBox extends VBox {
     private DetailBlock name;
@@ -18,6 +21,8 @@ public class InfoBox extends VBox {
         editable = false;
         contact = null;
 
+        this.setPadding(new Insets(10, 0, 0, 0));
+        this.setSpacing(10);
         this.getChildren().addAll(name, phone, email);
     }
 

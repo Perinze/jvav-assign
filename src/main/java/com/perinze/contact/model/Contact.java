@@ -1,5 +1,7 @@
 package com.perinze.contact.model;
 
+import com.perinze.contact.service.ContactService;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -9,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "contact")
-public class Contact extends AbstractModel {
+public class Contact extends ContactService {
     String name;
     String phone;
     String email;

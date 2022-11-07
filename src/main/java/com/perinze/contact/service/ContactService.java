@@ -2,10 +2,11 @@ package com.perinze.contact.service;
 
 import com.perinze.contact.model.Contact;
 import com.perinze.contact.orm.DbTemplate;
+import com.perinze.contact.view.RootBox;
 
 import java.util.List;
 
-public class ContactService {
+public class ContactService extends RootBox {
     final private DbTemplate db;
 
     public ContactService(DbTemplate db) {
@@ -25,6 +26,12 @@ public class ContactService {
             db.insert(contact);
         } else {
             db.update(contact);
+        }
+    }
+
+    public void remove(Contact contact) {
+        if (null != contact.getId()) {
+            db.delete(contact);
         }
     }
 }
