@@ -41,7 +41,22 @@ public class HelloApplication extends Application {
 
         RootBox root = new RootBox(contactService);
 
-        Scene scene = new Scene(root, 400, 250);
+        TabPane tabs = new TabPane();
+        Tab tabPrimary = new Tab("primary", root);
+        Tab tabAdd = new Tab("+");
+        tabPrimary.setClosable(false);
+        tabAdd.setClosable(false);
+        tabs.getTabs().addAll(tabPrimary, tabAdd);
+
+        tabAdd.setOnSelectionChanged(event -> {
+            if (tabs.getSelectionModel().getSelectedItem() == tabAdd) {
+                System.out.println("plus selected");
+            }
+        });
+
+        TableBox wdnmd = new TableBox(contactService);
+
+        Scene scene = new Scene(tabs, 400, 300);
         stage.setScene(scene);
         stage.show();
     }

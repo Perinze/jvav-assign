@@ -15,5 +15,5 @@ module com.perinze.contact {
 
     opens com.perinze.contact to javafx.fxml;
     exports com.perinze.contact;
-    exports com.perinze.contact.model to spring.beans;
+    exports com.perinze.contact.model;
 }

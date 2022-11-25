@@ -6,7 +6,7 @@ import com.perinze.contact.view.RootBox;
 
 import java.util.List;
 
-public class ContactService extends RootBox {
+public class ContactService {
     final private DbTemplate db;
 
     public ContactService(DbTemplate db) {

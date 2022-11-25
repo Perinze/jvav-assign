@@ -11,14 +11,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "contact")
-public class Contact extends ContactService {
+public class Contact extends AbstractModel {
     String name;
     String phone;
     String email;
-
-    public Contact() {
-
-    }
 
     @Column(nullable = false)
     public String getName() {
