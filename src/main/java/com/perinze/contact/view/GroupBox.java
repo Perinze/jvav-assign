@@ -3,16 +3,14 @@ package com.perinze.contact.view;
 import com.perinze.contact.model.Contact;
 import com.perinze.contact.service.ContactService;
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class RootBox extends VBox {
+public class GroupBox extends VBox {
     Predicate<Contact> predicate;
     ContactService contactService;
     ListBox listBox;
@@ -22,7 +20,7 @@ public class RootBox extends VBox {
     Button remove;
     Button done;
     Button cancel;
-    public RootBox(ContactService contactService) {// create a menu
+    public GroupBox(ContactService contactService) {// create a menu
         this.contactService = contactService;
 
         // 创建列表栏和详细信息栏

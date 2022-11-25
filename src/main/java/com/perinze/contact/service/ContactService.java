@@ -2,7 +2,6 @@ package com.perinze.contact.service;
 
 import com.perinze.contact.model.Contact;
 import com.perinze.contact.orm.DbTemplate;
-import com.perinze.contact.view.RootBox;
 
 import java.util.List;
 
