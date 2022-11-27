@@ -3,9 +3,11 @@ package com.perinze.contact.view;
 import com.perinze.contact.model.Contact;
 import com.perinze.contact.service.ContactService;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -33,6 +35,11 @@ public class GroupBox extends VBox {
         main.setSpacing(20);
         main.getChildren().addAll(listBox, infoBox);
 
+        MenuItem dataEntry = new MenuItem("Data Table");
+        MenuItem dashboardEntry = new MenuItem("Dashboard");
+
+        MenuButton menuButton = new MenuButton("more", null, dataEntry, dashboardEntry);
+
         // 创建按钮
         add = new Button("new");
         edit = new Button("edit");
@@ -44,7 +51,7 @@ public class GroupBox extends VBox {
         // 创建按钮栏并包含以上按钮
         HBox buttons = new HBox();
         buttons.setSpacing(7);
-        buttons.getChildren().addAll(add, edit, remove, done, cancel);
+        buttons.getChildren().addAll(add, edit, remove, done, cancel, menuButton);
 
         // 搜索框
         TextField search = new TextField();
@@ -96,6 +103,24 @@ public class GroupBox extends VBox {
         cancel.setOnAction(event -> {
             setEditing(false); // 查看状态
             infoBox.set(listBox.getSelectedItem()); // 设置选中联系人
+        });
+
+        dataEntry.setOnAction(event -> {
+            TableBox tableBox = new TableBox(contactService);
+
+            Scene scene = new Scene(tableBox);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        });
+
+        dashboardEntry.setOnAction(event -> {
+            Dashboard dashboard = new Dashboard();
+
+            Scene scene = new Scene(dashboard);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
         });
     }
 

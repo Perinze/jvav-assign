@@ -28,6 +28,7 @@ public class TabBox extends TabPane {
             if (newTab.textProperty().get().equals("+")) {
                 System.out.println("+ selected");
                 TextInputDialog inputDialog = new TextInputDialog();
+                inputDialog.setGraphic(null);
                 inputDialog.setHeaderText(null);
                 Optional<String> result = inputDialog.showAndWait();
                 if (result.isEmpty()) {

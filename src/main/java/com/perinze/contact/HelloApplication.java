@@ -26,10 +26,6 @@ public class HelloApplication extends Application {
         setDb();
         contactService = new ContactService(db);
 
-        GroupBox root = new GroupBox(contactService);
-
-        TableBox wdnmd = new TableBox(contactService);
-
         TabBox tabs = new TabBox(contactService);
 
         Scene scene = new Scene(tabs, 400, 300);

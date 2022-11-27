@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class Contact extends AbstractModel {
     String name;
     String phone;
     String email;
+    Integer viewed;
 
     @Column(nullable = false)
     public String getName() {
@@ -41,6 +43,15 @@ public class Contact extends AbstractModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Column(nullable = false)
+    public Integer getViewed() {
+        return viewed;
+    }
+
+    public void setViewed(Integer viewed) {
+        this.viewed = viewed;
     }
 
     @Override
