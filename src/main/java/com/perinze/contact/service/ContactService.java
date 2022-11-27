@@ -33,4 +33,25 @@ public class ContactService {
             db.delete(contact);
         }
     }
+
+    public void increaseView(Contact contact) {
+        if (null != contact.getId()) {
+            contact.setViewed(contact.getViewed() + 1);
+            db.update(contact);
+        }
+    }
+
+    public void resetView(Contact contact) {
+        if (null != contact.getId()) {
+            contact.setViewed(0);
+            db.update(contact);
+        }
+    }
+
+    public void resetViewAll() {
+        getAll().forEach(contact -> {
+            contact.setViewed(0);
+            db.update(contact);
+        });
+    }
 }

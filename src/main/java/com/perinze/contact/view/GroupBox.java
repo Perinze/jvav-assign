@@ -72,6 +72,7 @@ public class GroupBox extends VBox {
         listBox.setSelectionAction((observableValue, old, contact) -> {
             setEditing(false); // 设置为查看状态（不可编辑）
             infoBox.set(contact); // 详细信息栏设置选中联系人
+            contactService.increaseView(contact);
         });
 
         // 添加按钮行为
@@ -115,7 +116,7 @@ public class GroupBox extends VBox {
         });
 
         dashboardEntry.setOnAction(event -> {
-            Dashboard dashboard = new Dashboard();
+            Dashboard dashboard = new Dashboard(contactService);
 
             Scene scene = new Scene(dashboard);
             Stage stage = new Stage();
