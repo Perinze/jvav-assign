@@ -35,9 +35,9 @@ public class GroupBox extends VBox {
         main.setSpacing(20);
         main.getChildren().addAll(listBox, infoBox);
 
+        // 设置菜单
         MenuItem dataEntry = new MenuItem("Data Table");
         MenuItem dashboardEntry = new MenuItem("Dashboard");
-
         MenuButton menuButton = new MenuButton("more", null, dataEntry, dashboardEntry);
 
         // 创建按钮
@@ -106,6 +106,7 @@ public class GroupBox extends VBox {
             infoBox.set(listBox.getSelectedItem()); // 设置选中联系人
         });
 
+        // 设置菜单行为
         dataEntry.setOnAction(event -> {
             TableBox tableBox = new TableBox(contactService);
 
@@ -114,7 +115,6 @@ public class GroupBox extends VBox {
             stage.setScene(scene);
             stage.show();
         });
-
         dashboardEntry.setOnAction(event -> {
             Dashboard dashboard = new Dashboard(contactService);
 
